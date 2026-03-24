@@ -50,4 +50,4 @@ pip install qiskit-ibm-runtime
 
 ## Reference
 
-Figgatt et al. — [Complete 3-Qubit Grover Search on a Programmable Quantum Computer](http://www.diva-portal.org/smash/get/diva2:1214481/FULLTEXT01.pdf)
+Vera Blomkvist Karlsson and Philip Strömberg — [4-qubit Grover's algorithm implemented for the ibmqx5 architecture](http://www.diva-portal.org/smash/get/diva2:1214481/FULLTEXT01.pdf)
