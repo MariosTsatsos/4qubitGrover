@@ -1,40 +1,53 @@
-# 4-Qubit Grover Implementation
+# Grover's Algorithm — 4 Qubits
 
-Minimal implementation of Grover’s algorithm on a 4-qubit system.
+Jupyter notebook implementation of Grover's quantum search algorithm for a 4-qubit register, marking the state |0010⟩.
 
-Originally written in 2020. Quantum libraries (notably Qiskit) have since evolved, so parts of the codebase may be outdated and require refactoring to run on current versions.
+---
 
-## Overview
+## Notebooks
 
-This project implements Grover’s search algorithm using explicit circuit construction and state evolution.
+| Notebook | Description |
+|---|---|
+| [`Grovers_algo-4_qubits.ipynb`](Grovers_algo-4_qubits.ipynb) | Original (2020) — Qiskit 0.x, includes live IBM Q hardware run on `ibmq_essex` |
+| [`Grovers_algo-4_qubits_qiskit1x.ipynb`](Grovers_algo-4_qubits_qiskit1x.ipynb) | Refactored for **Qiskit 1.x** — updated APIs, rich explanations, simulator-ready |
 
-Focus:
-- amplitude amplification dynamics
-- behaviour across iterations
-- small-scale, fully observable system
+---
 
-This is not meant as a production-ready quantum application, but as a controlled setting to study search/optimisation behaviour.
+## What it covers
 
-## Notes on Implementation
+- **Theory** — oracle construction, Grover diffuser, iteration count derivation ($k = \lfloor\pi/4 \cdot \sqrt{N}\rfloor = 3$ for $N=16$)
+- **`n_controlled_Z`** — explicit decomposition of the multi-controlled Z gate for 1, 2, and 3 controls using the phase-gate ladder ($T$-gate decomposition of Toffoli)
+- **Simulation** — AerSimulator run showing ~96% success probability on the marked state
+- **Legacy hardware section** — original IBM Q cells preserved with migration notes
 
-- Built at a time when Qiskit APIs differed significantly from current versions  
-- Some components may break under latest releases  
-- Refactoring to modern Qiskit is required  
+---
 
-## Related Work
+## Qiskit 1.x migration notes
 
-A more formal and complete implementation can be found here:  
-http://www.diva-portal.org/smash/get/diva2:1214481/FULLTEXT01.pdf
+| Old (0.x) | New (1.x) |
+|---|---|
+| `from qiskit import BasicAer` | `from qiskit_aer import AerSimulator` |
+| `execute(circuit, backend, shots=N)` | `backend.run(transpile(circuit, backend), shots=N)` |
+| `circuit.cu1(θ, a, b)` | `circuit.cp(θ, a, b)` |
+| `from qiskit import IBMQ` | `from qiskit_ibm_runtime import QiskitRuntimeService` |
+| `from qiskit.tools.monitor import job_monitor` | Removed — use `job.status()` |
 
-## Status
+---
 
-Archived prototype. Useful as:
-- reference implementation  
-- starting point for updated versions  
-- simple testbed for algorithmic behaviour  
+## Requirements
 
-## TODO
+```bash
+pip install qiskit qiskit-aer matplotlib
+```
 
-- Refactor to latest Qiskit API  
-- Add reproducible experiments / outputs  
-- Clean structure and modularise circuit components  
+For running on real IBM hardware (optional):
+
+```bash
+pip install qiskit-ibm-runtime
+```
+
+---
+
+## Reference
+
+Figgatt et al. — [Complete 3-Qubit Grover Search on a Programmable Quantum Computer](http://www.diva-portal.org/smash/get/diva2:1214481/FULLTEXT01.pdf)
