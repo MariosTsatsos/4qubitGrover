@@ -9,7 +9,7 @@ Jupyter notebook implementation of Grover's quantum search algorithm for a 4-qub
 | Notebook | Description |
 |---|---|
 | [`Grovers_algo-4_qubits.ipynb`](Grovers_algo-4_qubits.ipynb) | Original (2020) — Qiskit 0.x, includes live IBM Q hardware run on `ibmq_essex` |
-| [`Grovers_algo-4_qubits_qiskit1x.ipynb`](Grovers_algo-4_qubits_qiskit1x.ipynb) | Refactored for **Qiskit 1.x** — updated APIs, rich explanations, simulator-ready |
+| [`Grovers_algo-4_qubits_qiskit1x.ipynb`](Grovers_algo-4_qubits_qiskit1x.ipynb) | Refactored for **Qiskit 1.x** by Claude — updated APIs, rich explanations, simulator-ready |
 
 ---
 
